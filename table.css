@@ -86,3 +86,55 @@
   
   
 
+
+<div class="container">
+    <br>
+    <br>
+    <div class="card">
+       <div class="card-body">
+          <div class="row">
+              <div class="text-input">
+                  <form name="form" #f="ngForm" class="full-width"  novalidate>
+                    <input type="text" id="input1" name="firstName" [(ngModel)]="searchText" #firstName="ngModel" minlength="1" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" autocomplete="off" required  placeholder="Search for a employee by name">
+                    <label for="input1">Name</label>
+                </form>
+                </div>
+             <!-- Show search results here as ordered list -->
+             <ng-container *ngIf='firstName.dirty && searchText.length > 0'>
+                <table class="emp-table">
+                   <thead>
+                      <tr>
+                         <th>Name</th>
+                         <th>ID</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngFor="let emp of emplyees |filter:searchText">
+                         <td>{{emp.name}}</td>
+                         <td>{{emp.id}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </ng-container>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+
+
+
+  emplyees = [
+    { id: 101, name: 'Akash' },
+    { id: 102, name: 'Selva' },
+    { id: 103, name: 'Lokesh'},
+    { id: 104, name: 'Vicky' },
+    { id: 105, name: 'Akash' },
+    { id: 106, name: 'Tamri' },
+    { id: 107, name: 'Mani'  },
+    { id: 108, name: 'Selva' },
+    { id: 109, name: 'Selva' },
+    { id: 110, name: 'Vicky' },
+    { id: 111, name: 'selva' }
+  ];
