@@ -4,3 +4,7 @@ function getSelectRule(element, index, array) {
           
 var ruleRoute = fields[0].rule.filter(getSelectRule); 
 console.log("ruleRoute  : " + ruleRoute );
+
+
+
+s = fields[0].rule.filter(rule => rule.value === paymentmthd.value)
